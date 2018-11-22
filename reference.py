@@ -20,6 +20,6 @@
             sync_send_order_notify_v2(**params)
   
   
-  
+  6  obj_extra = json.loads(extra or "{}") if isinstance(extra, basestring) else (extra or {})
   
 """
