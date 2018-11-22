@@ -8,5 +8,18 @@
 
 4 sum([val.real_amount for val in items])
 
-5
+5      params = dict(
+            event=event_type,
+            callback_url=req.extend_params.callback_url,
+            order_id=req.get_order_id(),
+            data=data
+        )
+        if req.is_async:
+            send_order_notify_v2.delay(**params)
+        else:
+            sync_send_order_notify_v2(**params)
+  
+  
+  
+  
 """
