@@ -1,4 +1,6 @@
 """
+优雅写法
+
 1 order_type = 'special_gift' if item.sku_kind == SKUKind.SKU_KIND_PACKAGE else 'gift'
 
 2 "100" if config.fee_payer == "zhihu" else "0"
@@ -20,6 +22,14 @@
             sync_send_order_notify_v2(**params)
   
   
-  6  obj_extra = json.loads(extra or "{}") if isinstance(extra, basestring) else (extra or {})
+ 6  obj_extra = json.loads(extra or "{}") if isinstance(extra, basestring) else (extra or {})
   
+ 7  if commodity_type_strs is None:
+         commodity_type_strs = ('live,live_special,live_course,'
+                                   'book,audio_book,physical_product,remix_album,remix_instabook')
+
+     commodity_type_strs = [c for c in commodity_type_strs.split(',') if c]
+
+    结果：['live', 'live_special', 'live_course', 'book', 'audio_book', 'physical_product', 'remix_album', 'remix_instabook']
+
 """
